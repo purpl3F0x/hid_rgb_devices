@@ -57,11 +57,9 @@ enum {
 
 };
 
-
-struct Aura_hid: public Ligthing_hid_device_info{
+struct Aura_hid : public Ligthing_hid_device_info {
   explicit Aura_hid(hid_device_info& base);
 };
-
 
 typedef std::vector<Aura_hid> AuraHIDDevices;
 

@@ -13,12 +13,9 @@
 
 int main() {
   AuraHIDDevices aura_devs;
-  HofLinks hofs;
 
   auto n = detectAuraHIDDevice(aura_devs);
-  auto f = detectHOFLinks(hofs);
 
-  printf("%d\n\n", f);
 
   if (!n) {
     printf("Didn't found any AURA ARGB devices\n");
@@ -49,7 +46,7 @@ int main() {
 
   // Create msg in buffer
   buf[0] = MSG_START;
-  buf[1] = AURA_EFFECT_MODE;    // MODE
+  buf[1] = AURA_EFFECT_MODE;    // Control Mode
   buf[2] = 0x0;                 // Device
   buf[3] = 0x0;                 // Initial LED position
   buf[4] = AURA_MODE_STATIC;    // Effect
@@ -65,6 +62,16 @@ int main() {
 
   // Close connection to device
   hid_close(handle);
+
+
+
+  /* HOF link */
+  HofLinks hof_links;
+
+  if (detectHOFLinks(hof_links)) {
+    hof_links[0].init();
+    hof_links[0].setColor(90, 60, 90);
+  }
 
 }
 

@@ -6,11 +6,9 @@
 
 #include "aura_hid.hpp"
 
-
-Aura_hid::Aura_hid(hid_device_info& base):Ligthing_hid_device_info(base) {
+Aura_hid::Aura_hid(hid_device_info& base) : Ligthing_hid_device_info(base) {
   return;
 }
-
 
 uint8_t detectAuraHIDDevice(AuraHIDDevices& aura_devs) {
   uint8_t numOfDevs = 0;

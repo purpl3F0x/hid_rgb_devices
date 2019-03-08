@@ -12,7 +12,14 @@
 #include "hid_devices.hpp"
 
 struct Hof_link_hid: public Ligthing_hid_device_info{
+ private:
+  uint8_t buf[9];
+
+ public:
+  /* Constructor for copying hid_device_info obj */
   explicit Hof_link_hid (hid_device_info& base);
+  /* Sets single color to device */
+  void setColor(uint8_t r, uint8_t g, uint8_t b);
 };
 
 typedef std::vector<Hof_link_hid> HofLinks;
